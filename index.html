@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0b0d14">
+  <title>مكتبتي | UB MOVIES</title>
+  <style>
+    @font-face{font-family:Cairo;src:url('assets/fonts/cairo-arabic.woff2') format('woff2');font-weight:400 800;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF}
+    @font-face{font-family:Cairo;src:url('assets/fonts/cairo-latin.woff2') format('woff2');font-weight:400 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC}
+    @font-face{font-family:Inter;src:url('assets/fonts/inter-latin.woff2') format('woff2');font-weight:400 800;font-display:swap}
+    :root{--bg:#0b0d14;--surface:#161a26;--surface-2:#1f2433;--accent:#7c5cff;--accent-2:#ff4d6d;--text:#f4f5f8;--muted:#9aa1b5;--gold:#f5b942;--green:#34d399;--line:rgba(154,161,181,.13)}
+    *{box-sizing:border-box;margin:0;padding:0} html{min-height:100%;background:var(--bg);scroll-behavior:smooth} body{min-height:100vh;background:radial-gradient(ellipse at 82% -10%,rgba(124,92,255,.16),transparent 35%),var(--bg);color:var(--text);font-family:Cairo,Inter,sans-serif;line-height:1.55;padding-bottom:44px;-webkit-font-smoothing:antialiased} button,input{font:inherit} button{color:inherit;cursor:pointer} button:focus-visible,input:focus-visible{outline:2px solid #a998ff;outline-offset:3px}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(11,13,20,.93);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)} .topbar-inner{max-width:1420px;margin:auto;padding:13px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-mark{width:44px;height:44px;border-radius:14px;overflow:hidden;background:#242039;box-shadow:0 5px 24px rgba(124,92,255,.22);flex:0 0 auto}.brand-mark img{width:100%;height:100%;object-fit:cover}.brand-copy{line-height:1.2}.brand-name{font-family:Inter,Cairo,sans-serif;font-weight:800;letter-spacing:.04em;font-size:14px}.brand-caption{color:var(--muted);font-size:11px;margin-top:5px}.top-actions{display:flex;align-items:center;gap:10px}.library-status{color:var(--muted);font-size:12px;display:flex;align-items:center;gap:8px}.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(52,211,153,.65)}
+    .icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:9px 14px;transition:background .18s,border-color .18s}.icon-btn:hover{background:var(--surface-2);border-color:rgba(124,92,255,.45)}.icon-btn svg{width:17px;height:17px;color:#c4b8ff}
+    .page{max-width:1420px;margin:0 auto;padding:34px 36px 0}.welcome{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,370px);gap:30px;align-items:end;padding:14px 0 25px}.welcome h1{font-size:clamp(28px,4.1vw,48px);line-height:1.2;letter-spacing:-.035em;font-weight:800;max-width:700px}.welcome h1 span{color:#b7a9ff}.welcome p{font-size:15px;color:var(--muted);margin-top:12px;max-width:620px}.welcome-note{padding:16px 18px;border:1px solid rgba(124,92,255,.2);border-radius:16px;background:linear-gradient(135deg,rgba(124,92,255,.11),rgba(31,36,51,.65));color:#c6c2d8;font-size:13px}.welcome-note strong{display:block;color:var(--text);font-size:14px;margin-bottom:3px}
+    .search-panel{position:relative;overflow:hidden;background:linear-gradient(115deg,#19182b,#171a27 58%,#1d1b31);border:1px solid rgba(124,92,255,.28);border-radius:22px;padding:23px 25px 22px;margin-bottom:34px;box-shadow:0 22px 55px rgba(0,0,0,.2)}.search-panel:after{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(124,92,255,.12);border-radius:50%;top:-155px;left:8%;box-shadow:0 0 0 25px rgba(124,92,255,.025),0 0 0 55px rgba(124,92,255,.02);pointer-events:none}.search-heading{position:relative;z-index:1;display:flex;align-items:center;gap:11px;margin-bottom:14px}.search-symbol{display:grid;place-items:center;width:37px;height:37px;border-radius:12px;background:rgba(124,92,255,.16);color:#bcaeff}.search-symbol svg{width:19px;height:19px}.search-heading h2{font-size:17px;font-weight:700}.search-heading p{font-size:12px;color:var(--muted);margin-top:1px}.search-box{position:relative;z-index:1;display:flex;gap:10px}.search-box input{height:52px;flex:1;min-width:0;background:#10131d;border:1px solid #303447;border-radius:13px;color:var(--text);padding:0 17px;font-size:14px;transition:border-color .2s,box-shadow .2s}.search-box input::placeholder{color:#747b90}.search-box input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,92,255,.14);outline:none}.search-box button{min-width:112px;border:0;border-radius:13px;background:var(--accent);font-weight:700;padding:0 23px;box-shadow:0 7px 22px rgba(124,92,255,.23);transition:background .18s,transform .18s}.search-box button:hover{background:#8c72ff;transform:translateY(-1px)}.search-box button:disabled{opacity:.65;cursor:wait;transform:none}
+    #searchResultsSection{display:none;margin:-13px 0 38px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:16px}.section-title{font-size:20px;line-height:1.35;font-weight:750;display:flex;align-items:center;gap:10px}.section-title:before{content:"";width:4px;height:22px;background:var(--accent);border-radius:9px}.section-caption{color:var(--muted);font-size:12px;margin-top:4px}.quiet-btn{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:12px}.quiet-btn:hover{color:var(--text);background:var(--surface)}#searchResultsList{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:16px}.result-item{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:15px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s}.result-item:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.5);box-shadow:0 14px 30px rgba(0,0,0,.28)}.result-poster{width:100%;aspect-ratio:2/3;position:relative;overflow:hidden;background:linear-gradient(140deg,#242338,#141823)}.result-poster:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(11,13,20,.28));pointer-events:none}.result-thumb{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}.result-item:hover .result-thumb{transform:scale(1.035)}.result-thumb-empty{display:flex;align-items:center;justify-content:center;color:#b9aaff}.result-thumb-empty svg{width:38px;height:38px}.result-type{position:absolute;z-index:1;top:10px;right:10px;padding:4px 9px;border-radius:8px;background:rgba(11,13,20,.78);border:1px solid rgba(255,255,255,.13);color:#d0c6ff;font-size:10px}.result-content{padding:11px;display:flex;flex-direction:column;gap:10px;flex:1}.result-title{font-weight:700;font-size:13px;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:38px}.add-btn{width:100%;background:rgba(124,92,255,.16);color:#c4b8ff;border:1px solid rgba(124,92,255,.28);padding:8px 10px;border-radius:10px;font-size:12px;font-weight:700;white-space:nowrap;transition:background .18s,color .18s}.add-btn:hover{background:var(--accent);color:white}.add-btn:disabled{opacity:.55;cursor:default}.badge{display:inline-block;background:rgba(124,92,255,.15);color:#b9aaff;padding:2px 8px;border-radius:6px;font-size:10px;margin-bottom:5px}
+    .library-head-actions{display:flex;align-items:center;gap:9px}.refresh-all-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:9px 13px;color:white;font-size:12px;font-weight:700;box-shadow:0 6px 20px rgba(124,92,255,.2);transition:background .18s,transform .18s}.refresh-all-btn:hover{background:#8c72ff;transform:translateY(-1px)}.refresh-all-btn:disabled{opacity:.62;cursor:wait;transform:none}.work-card{position:relative}
+    .delete-work-btn{position:absolute;z-index:3;top:9px;left:9px;min-width:35px;height:35px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;gap:4px;border-radius:11px;background:rgba(11,13,20,.85);border:1px solid rgba(255,255,255,.17);color:#ffd1da;font-size:11px;font-weight:700;transition:background .18s,color .18s,border-color .18s}
+    .delete-work-btn:hover,.delete-work-btn.confirming{background:var(--accent-2);color:white;border-color:var(--accent-2)}
+    .delete-work-btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.8;fill:none}
+    .library-section{padding-bottom:26px}.count-pill{font-family:Inter,Cairo,sans-serif;font-size:11px;background:var(--surface-2);color:#c7cadd;padding:4px 9px;border-radius:9px;vertical-align:middle}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}.work-card{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:15px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column}.work-card:hover{transform:translateY(-5px);border-color:rgba(124,92,255,.5);box-shadow:0 16px 34px rgba(0,0,0,.29)}.poster-wrap{width:100%;aspect-ratio:2/3;background:linear-gradient(140deg,#242338,#141823);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}.poster-wrap:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(11,13,20,.42));pointer-events:none}.poster-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.work-card:hover .poster-wrap img{transform:scale(1.035)}.poster-fallback{display:flex;align-items:center;justify-content:center;color:#b9aaff;opacity:.72}.poster-fallback svg{width:38px;height:38px;stroke:currentColor;stroke-width:1.5;fill:none}.status-icon{width:17px;height:17px;flex:none;vertical-align:middle;stroke:currentColor;stroke-width:1.8;fill:none}.status-icon.error{color:var(--accent-2)}.status-icon.success{color:var(--green)}.status-icon.spin{color:#b9aaff;animation:icon-spin 1s linear infinite}@keyframes icon-spin{to{transform:rotate(360deg)}}.icon-only{width:15px;height:15px;vertical-align:middle;stroke:currentColor;stroke-width:2;fill:none}.card-body{padding:12px 13px 14px;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:6px}.work-title{font-size:13px;font-weight:700;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.work-meta{font-size:11px;color:var(--muted)}#libraryGrid>p{grid-column:1/-1;padding:20px 0;color:var(--muted)!important;font-size:14px}
+    .modal{display:none;position:fixed;inset:0;background:rgba(5,6,11,.88);z-index:100;overflow-y:auto;padding:28px 18px;backdrop-filter:blur(12px)}.modal-content{max-width:950px;margin:0 auto;background:#11141e;border:1px solid rgba(154,161,181,.17);border-radius:22px;padding:20px;box-shadow:0 32px 100px rgba(0,0,0,.55)}.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px;gap:12px}.modal-header h2{font-size:19px;line-height:1.4;flex:1}.modal-tools{display:flex;gap:8px;flex-wrap:wrap}.close-btn,.renew-btn,.modal-del-btn{border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12px;background:var(--surface-2)}.renew-btn{background:rgba(124,92,255,.15);color:#c2b6ff;border-color:rgba(124,92,255,.24)}.renew-btn:disabled{opacity:.6}.modal-del-btn{background:rgba(255,77,109,.15);color:#ffd1da;border-color:rgba(255,77,109,.3)}.modal-del-btn.confirming{background:var(--accent-2);color:white}.modal video{width:100%;border-radius:14px;background:#000;max-height:62vh;display:block;margin-bottom:15px}.now-playing{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 2px 12px}.now-playing span{color:#c6baff;font-weight:700;font-size:13px}.now-playing a{color:var(--muted);font-size:11px;text-decoration:none}.now-playing a:hover{color:var(--text)}.ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(106px,1fr));gap:9px;margin-top:12px}.ep-btn{background:var(--surface);color:var(--text);border:1px solid var(--line);padding:11px 8px;border-radius:10px;text-align:center;font-size:12px;font-weight:700;transition:background .16s,border-color .16s}.ep-btn:hover{border-color:rgba(124,92,255,.55)}.ep-btn.active{background:var(--accent);border-color:var(--accent);box-shadow:0 5px 18px rgba(124,92,255,.2)}.status-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#24283a;color:white;padding:11px 18px;border:1px solid rgba(154,161,181,.18);border-radius:14px;font-size:12px;box-shadow:0 10px 34px rgba(0,0,0,.38);display:none;z-index:150;max-width:calc(100% - 28px);text-align:center}
+    @media(max-width:780px){.topbar-inner{padding:11px 18px}.page{padding:25px 18px 0}.welcome{grid-template-columns:1fr;gap:18px;padding-top:10px}.welcome-note{max-width:450px}.grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:13px}.search-panel{padding:19px;border-radius:18px}#searchResultsList{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}}
+    @media(max-width:480px){body{padding-bottom:25px}.topbar-inner{padding:10px 14px}.brand-mark{width:38px;height:38px}.brand-caption,.library-status{display:none}.icon-btn{padding:8px 10px;font-size:11px}.page{padding:22px 14px 0}.welcome h1{font-size:30px}.welcome p{font-size:13px}.welcome-note{font-size:12px}.search-panel{padding:16px;margin-bottom:27px}.search-heading h2{font-size:15px}.search-box{gap:7px}.search-box input{height:48px;padding:0 11px;font-size:12px}.search-box button{min-width:75px;padding:0 12px;font-size:12px}.section-title{font-size:17px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card-body{padding:10px}.work-title{font-size:12px}.modal{padding:12px 9px}.modal-content{padding:13px;border-radius:17px}.modal-header{align-items:flex-start;flex-wrap:wrap}.modal-header h2{font-size:16px;min-width:100%;order:-1}.modal-tools{width:100%;justify-content:space-between}.modal video{max-height:44vh}.now-playing{align-items:flex-start;flex-direction:column;gap:3px}.library-head-actions{gap:5px}.refresh-all-btn{padding:8px 9px;font-size:10px;gap:5px;white-space:nowrap}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark"><img src="assets/ub-logo.png" alt="UB MOVIES" onerror="this.style.display='none'"></div>
+      <div class="brand-copy"><div class="brand-name">UB MOVIES</div><div class="brand-caption">مكتبتك الخاصة للمشاهدة</div></div>
+    </div>
+    <div class="top-actions">
+      <div class="library-status"><span class="live-dot"></span><span>مكتبتك متصلة</span></div>
+      <button class="icon-btn" onclick="loadLibrary()" aria-label="تحديث القائمة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg><span>تحديث القائمة</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main class="page">
+  <section class="welcome">
+    <div><h1>كل عناوينك المفضلة<br><span>في مكان واحد.</span></h1><p>أضف أحدث الأفلام والمسلسلات إلى مكتبتك، وشاهد حلقاتك مباشرة من هنا.</p></div>
+    <div class="welcome-note"><strong>مساحتك السينمائية</strong>ابحث عن عمل جديد أو افتح عنواناً من مكتبتك لمتابعة المشاهدة.</div>
+  </section>
+  <section class="search-panel" aria-label="البحث عن فيلم أو مسلسل">
+    <div class="search-heading"><div class="search-symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7.5"/><line x1="20.5" y1="20.5" x2="16.4" y2="16.4"/></svg></div><div><h2>اكتشف عملاً جديداً</h2><p>ابحث في أكوام وأضف النتائج إلى مكتبتك</p></div></div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="اسم المسلسل أو الفيلم..." onkeypress="if(event.key==='Enter') searchAkwam()" aria-label="اسم المسلسل أو الفيلم">
+      <button id="searchBtn" onclick="searchAkwam()">بحث</button>
+    </div>
+  </section>
+  <section id="searchResultsSection">
+    <div class="section-head"><div><h2 class="section-title">نتائج البحث</h2><p class="section-caption">اختر عملاً لإضافته إلى مكتبتك</p></div><button class="quiet-btn" onclick="document.getElementById('searchResultsSection').style.display='none'">إخفاء النتائج</button></div>
+    <div id="searchResultsList"></div>
+  </section>
+  <section class="library-section">
+    <div class="section-head"><div><h2 class="section-title">مكتبتي <span class="count-pill" id="worksCount">0</span></h2><p class="section-caption">أفلامك ومسلسلاتك المحفوظة</p></div><div class="library-head-actions"><button id="refreshAllBtn" class="refresh-all-btn" type="button" onclick="refreshAllLinks()"><svg class="icon-only" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9a7 7 0 0 1 11.8-2L20 12M4 12l2.6 5a7 7 0 0 0 11.8-2"/></svg>تحديث كل الروابط</button></div></div>
+    <div id="libraryGrid" class="grid"><p><svg class="status-icon spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 4v6h-6"/></svg> جاري تحميل مكتبتك...</p></div>
+  </section>
+</main>
+<div id="playerModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header"><h2 id="modalTitle"></h2><div class="modal-tools"><button id="renewLinksBtn" class="renew-btn" onclick="renewCurrentWork()"><svg class="icon-only" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9a7 7 0 0 1 11.8-2L20 12M4 12l2.6 5a7 7 0 0 0 11.8-2"/></svg> تجديد الروابط</button><button id="modalDeleteBtn" class="modal-del-btn" onclick="deleteWork(currentOpenKey, this)">حذف</button><button class="close-btn" onclick="closeModal()">إغلاق <svg class="icon-only" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div></div>
+    <video id="videoPlayer" controls playsinline></video>
+    <div class="now-playing"><span id="nowPlayingLabel">اختر حلقة للتشغيل</span><a id="directDownloadBtn" href="#" target="_blank">فتح في مشغل خارجي ↗</a></div>
+    <div id="episodesContainer" class="ep-grid"></div>
+  </div>
+</div>
+<div id="toast" class="status-toast"></div>
+<script>
+  const API_URL = "https://script.google.com/macros/s/AKfycbxTqiE_1kHY6e66qjhXZMLYlHXfCUYruUXXKyarzaEd0y3LFVITwwADIJPDKlYOjWVh5w/exec";
+  let libraryData = {};
+  let currentOpenKey = null;
+  const TRASH_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M5 7l1 14h12l1-14M9 7V4h6v3"/></svg>';
+  const SPIN_SVG = '<svg class="status-icon spin" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 4v6h-6"/></svg>';
+
+  function showToast(msg, duration = 3500) {
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.style.display = "block";
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.style.display = "none", duration);
+  }
+
+  async function loadLibrary() {
+    const grid = document.getElementById("libraryGrid");
+    grid.innerHTML = `<p style="color: var(--muted);">${SPIN_SVG} جاري تحديث المكتبة...</p>`;
+    try {
+      const res = await fetch(`${API_URL}?action=list`);
+      const json = await res.json();
+      const rows = json.data || [];
+      
+      libraryData = {};
+      rows.forEach(item => {
+        const key = `${item.title} (${item.season})`;
+        if (!libraryData[key]) {
+          libraryData[key] = { title: item.title, season: item.season, poster: item.poster || "", episodes: [] };
+        }
+        if (!libraryData[key].poster && item.poster) {
+          libraryData[key].poster = item.poster;
+        }
+        libraryData[key].episodes.push(item);
+      });
+
+      const keys = Object.keys(libraryData);
+      document.getElementById("worksCount").textContent = keys.length;
+      
+      if (keys.length === 0) {
+        grid.innerHTML = '<p style="color: var(--muted);">المكتبة فارغة حالياً. استخدم البحث بالأعلى لإضافة مسلسلات أو أفلام.</p>';
+        return;
+      }
+
+      grid.innerHTML = "";
+      keys.forEach(key => {
+        const work = libraryData[key];
+        const isMovie = work.episodes[0].episode === "فيلم";
+        const card = document.createElement("div");
+        card.className = "work-card";
+        
+        const posterHtml = work.poster
+          ? `<img src="${work.poster}" alt="${work.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><span class="poster-fallback" style="display:none;"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4m10 0h4M3 15h4m10 0h4"/></svg></span>`
+          : `<span class="poster-fallback"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4m10 0h4M3 15h4m10 0h4"/></svg></span>`;
+
+        card.innerHTML = `
+          <div class="poster-wrap">${posterHtml}</div>
+          <div class="card-body">
+            <div class="work-title">${work.title}</div>
+            <div class="work-meta">${isMovie ? "فيلم • " + work.episodes[0].quality : `مسلسل • ${work.season} • ${work.episodes.length} حلقة`}</div>
+          </div>
+        `;
+        const deleteBtn = document.createElement("button");
+        deleteBtn.type = "button";
+        deleteBtn.className = "delete-work-btn";
+        deleteBtn.title = `حذف ${work.title} من المكتبة`;
+        deleteBtn.innerHTML = TRASH_SVG;
+        deleteBtn.onclick = function(event) { event.stopPropagation(); deleteWork(key, deleteBtn); };
+        card.appendChild(deleteBtn);
+        card.onclick = () => openWork(key);
+        grid.appendChild(card);
+      });
+    } catch (err) {
+      grid.innerHTML = '<p style="color: #ef4444;">تعذر الاتصال بالمكتبة. تأكد من الإنترنت.</p>';
+    }
+  }
+
+  async function searchAkwam() {
+    const q = document.getElementById("searchInput").value.trim();
+    if (!q) return;
+    
+    const btn = document.getElementById("searchBtn");
+    const section = document.getElementById("searchResultsSection");
+    const list = document.getElementById("searchResultsList");
+    
+    btn.disabled = true;
+    btn.textContent = "جاري البحث...";
+    section.style.display = "block";
+    list.innerHTML = `<p style="color: var(--muted);">${SPIN_SVG} جاري البحث في أكوام...</p>`;
+
+    try {
+      const res = await fetch(`${API_URL}?action=search&q=${encodeURIComponent(q)}`);
+      const json = await res.json();
+      const results = json.results || [];
+
+      if (results.length === 0) {
+        list.innerHTML = '<p style="color: var(--muted);">لم يتم العثور على نتائج.</p>';
+      } else {
+        list.innerHTML = "";
+        results.forEach(item => {
+          const div = document.createElement("div");
+          div.className = "result-item";
+          const imgHtml = item.poster
+            ? `<img class="result-thumb" src="${item.poster}" alt="${item.title}" onerror="this.style.display='none'">`
+            : `<div class="result-thumb result-thumb-empty"><svg class="status-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4m10 0h4M3 15h4m10 0h4"/></svg></div>`;
+            
+          div.innerHTML = `
+            <div class="result-poster">
+              ${imgHtml}
+              <span class="result-type">${item.type}</span>
+            </div>
+            <div class="result-content">
+              <div class="result-title">${item.title}</div>
+              <button class="add-btn" onclick="addWorkToSheet(this, '${item.url}', '${item.poster || ""}')"><svg class="icon-only" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> إضافة</button>
+            </div>
+          `;
+          list.appendChild(div);
+        });
+      }
+    } catch (e) {
+      list.innerHTML = '<p style="color: #ef4444;">حدث خطأ أثناء البحث.</p>';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "بحث";
+    }
+  }
+
+  async function addWorkToSheet(btn, url, poster) {
+    btn.disabled = true;
+    btn.innerHTML = `${SPIN_SVG} جاري السحب...`;
+    showToast("جاري استخراج الروابط وحفظها (قد يستغرق 15-30 ثانية)...", 10000);
+
+    try {
+      const res = await fetch(`${API_URL}?action=add&url=${encodeURIComponent(url)}&poster=${encodeURIComponent(poster)}`);
+      const json = await res.json();
+      btn.innerHTML = '<svg class="status-icon success" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> تم (' + (json.added || 0) + ')';
+      showToast(`تم حفظ/تحديث (${json.added || 0}) حلقة بنجاح`);
+      loadLibrary();
+    } catch (e) {
+      btn.disabled = false;
+      btn.innerHTML = 'إعادة المحاولة';
+      showToast("حدث خطأ أثناء السحب.");
+    }
+  }
+
+  async function refreshAllLinks() {
+    const btn = document.getElementById("refreshAllBtn");
+    const keys = Object.keys(libraryData);
+    if (btn.disabled) return;
+    if (!keys.length) {
+      showToast("المكتبة فارغة حالياً.");
+      return;
+    }
+
+    btn.disabled = true;
+    let totalUpdated = 0;
+    let failedWorks = 0;
+
+    try {
+      for (let i = 0; i < keys.length; i++) {
+        const work = libraryData[keys[i]];
+        btn.innerHTML = `${SPIN_SVG} تحديث (${i + 1}/${keys.length})`;
+        showToast(`جاري تحديث (${i + 1} من ${keys.length}): ${work.title}...`, 15000);
+
+        const params = new URLSearchParams({ action: "renew_single", title: work.title, season: work.season });
+        const res = await fetch(`${API_URL}?${params.toString()}`);
+        const json = await res.json();
+
+        if (!res.ok || json.success !== true) {
+          failedWorks++;
+        } else {
+          totalUpdated += (json.updated || 0);
+        }
+      }
+
+      const msg = `تم تحديث ${totalUpdated} رابط` + (failedWorks ? `، وتعذر تحديث ${failedWorks} عمل.` : " بنجاح.");
+      showToast(msg, 6000);
+      await loadLibrary();
+    } catch (err) {
+      showToast("تعذر إكمال تحديث الروابط.", 6000);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<svg class="icon-only" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9a7 7 0 0 1 11.8-2L20 12M4 12l2.6 5a7 7 0 0 0 11.8-2"/></svg>تحديث كل الروابط';
+    }
+  }
+
+  async function deleteWork(key, btn) {
+    const work = libraryData[key];
+    if (!work) return;
+
+    if (btn && btn.dataset.confirmed !== "true") {
+      btn.dataset.confirmed = "true";
+      btn.classList.add("confirming");
+      btn.textContent = "تأكيد الحذف؟";
+      showToast(`اضغط مرة أخرى لتأكيد حذف "${work.title}"`, 4000);
+      setTimeout(() => {
+        if (btn && !btn.disabled) {
+          btn.dataset.confirmed = "false";
+          btn.classList.remove("confirming");
+          btn.innerHTML = btn.id === "modalDeleteBtn" ? "حذف" : TRASH_SVG;
+        }
+      }, 4000);
+      return;
+    }
+
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = SPIN_SVG;
+    }
+
+    try {
+      const params = new URLSearchParams({ action: "deleteWork", title: work.title, season: work.season });
+      const res = await fetch(`${API_URL}?${params.toString()}`);
+      const json = await res.json();
+      if (!res.ok || json.success !== true || typeof json.deleted === "undefined") {
+        throw new Error("تعذر تأكيد الحذف.");
+      }
+      showToast(`تم حذف "${work.title}" من المكتبة.`);
+      if (currentOpenKey === key) closeModal();
+      await loadLibrary();
+    } catch (err) {
+      showToast(err.message || "تعذر حذف العمل.", 6000);
+      if (btn) {
+        btn.disabled = false;
+        btn.dataset.confirmed = "false";
+        btn.classList.remove("confirming");
+        btn.innerHTML = btn.id === "modalDeleteBtn" ? "حذف" : TRASH_SVG;
+      }
+    }
+  }
+
+  async function renewCurrentWork() {
+    if (!currentOpenKey || !libraryData[currentOpenKey]) return;
+    const work = libraryData[currentOpenKey];
+    const btn = document.getElementById("renewLinksBtn");
+    btn.disabled = true;
+    btn.innerHTML = `${SPIN_SVG} جاري التجديد...`;
+    showToast("جاري فحص وتجديد الروابط...", 8000);
+
+    try {
+      const params = new URLSearchParams({ action: "renew_single", title: work.title, season: work.season });
+      const res = await fetch(`${API_URL}?${params.toString()}`);
+      const json = await res.json();
+      if (!res.ok || json.success !== true) throw new Error("فشل التحديث.");
+      showToast(`تم تحديث (${json.updated || 0}) رابط`);
+      await loadLibrary();
+      if (libraryData[currentOpenKey]) openWork(currentOpenKey);
+    } catch (e) {
+      showToast("فشل التحديث.");
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<svg class="icon-only" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9a7 7 0 0 1 11.8-2L20 12M4 12l2.6 5a7 7 0 0 0 11.8-2"/></svg> تجديد الروابط';
+    }
+  }
+
+  function openWork(key) {
+    currentOpenKey = key;
+    const work = libraryData[key];
+    document.getElementById("modalTitle").textContent = `${work.title} (${work.season})`;
+    
+    const modDelBtn = document.getElementById("modalDeleteBtn");
+    if (modDelBtn) {
+      modDelBtn.disabled = false;
+      modDelBtn.dataset.confirmed = "false";
+      modDelBtn.classList.remove("confirming");
+      modDelBtn.textContent = "حذف";
+    }
+
+    const container = document.getElementById("episodesContainer");
+    container.innerHTML = "";
+
+    work.episodes.forEach((ep, idx) => {
+      const btn = document.createElement("button");
+      btn.className = "ep-btn";
+      btn.innerHTML = ep.episode === "فيلم" ? '<svg class="icon-only" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="none"><path d="M7 4v16l13-8z"/></svg> تشغيل الفيلم' : `حلقة ${ep.episode}`;
+      btn.onclick = () => playEpisode(ep, btn);
+      container.appendChild(btn);
+      if (idx === 0) playEpisode(ep, btn);
+    });
+
+    document.getElementById("playerModal").style.display = "block";
+  }
+
+  function playEpisode(ep, btnElement) {
+    document.querySelectorAll(".ep-btn").forEach(b => b.classList.remove("active"));
+    if (btnElement) btnElement.classList.add("active");
+
+    const video = document.getElementById("videoPlayer");
+    video.src = ep.mp4;
+    video.play().catch(() => {});
+
+    document.getElementById("nowPlayingLabel").textContent =
+      ep.episode === "فيلم" ? `جاري تشغيل الفيلم (${ep.quality})` : `الحلقة ${ep.episode} (${ep.quality})`;
+    document.getElementById("directDownloadBtn").href = ep.mp4;
+  }
+
+  function closeModal() {
+    const video = document.getElementById("videoPlayer");
+    video.pause();
+    video.src = "";
+    document.getElementById("playerModal").style.display = "none";
+    currentOpenKey = null;
+  }
+
+  loadLibrary();
+  const initialSearch = new URLSearchParams(window.location.search).get("q");
+  if (initialSearch) {
+    document.getElementById("searchInput").value = initialSearch;
+    searchAkwam();
+    document.getElementById("searchResultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+</script>
+</body>
+</html>
