@@ -276,6 +276,12 @@
   }
 
   loadLibrary();
+  const initialSearch = new URLSearchParams(window.location.search).get("q");
+  if (initialSearch) {
+    document.getElementById("searchInput").value = initialSearch;
+    searchAkwam();
+    document.getElementById("searchResultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 </script>
 </body>
 </html>
