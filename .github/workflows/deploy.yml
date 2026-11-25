@@ -20,19 +20,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Inject API URL from Secret
+      - name: Prepare Site and Inject API URL
         env:
           SECRET_API_URL: ${{ secrets.API_URL }}
         run: |
-          sed -i "s|__API_URL__|${SECRET_API_URL}|g" index.html
+          mkdir -p _site
+          cp index.html _site/
+          if [ -d "assets" ]; then cp -r assets _site/; fi
+          sed -i "s|__API_URL__|${SECRET_API_URL}|g" _site/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
